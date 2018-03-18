@@ -2,6 +2,7 @@
 -- Schema guardian
 -- -----------------------------------------------------
 # Drop SCHEMA guardian;
+DROP SCHEMA IF EXISTS `guardian`;
 CREATE SCHEMA IF NOT EXISTS `guardian`
   DEFAULT CHARACTER SET utf8;
 USE `guardian`;
@@ -9,92 +10,82 @@ USE `guardian`;
 -- -----------------------------------------------------
 -- Table `guardian`.`user`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `guardian`.`user`;
 
-CREATE TABLE `user` (
-  `id`            INT         NOT NULL AUTO_INCREMENT,
-  `firstName`     VARCHAR(45) NOT NULL,
-  `lastName`      VARCHAR(45) NOT NULL,
-  `inn`           INT         NOT NULL,
-  `citizenshipId` VARCHAR(45) NOT NULL,
-  `birthDate`     INT         NOT NULL,
-  `cityId`        VARCHAR(45) NOT NULL,
-  `tel`           INT         NOT NULL,
-  `photoExists`   INT,
-  `departmentId`  VARCHAR(45) NOT NULL,
-  `createDate`    TIMESTAMP   NOT NULL,
-  `updateDate`    TIMESTAMP   NOT NULL,
-  PRIMARY KEY (`id`)
-)
-  ENGINE = InnoDB
-  DEFAULT CHARACTER SET = utf8;
-
--- -----------------------------------------------------
--- Table `guardian`.`citizenship`
--- -----------------------------------------------------
 DROP TABLE IF EXISTS `guardian`.`citizenship`;
-
-CREATE TABLE `citizenship` (
-  `id`          INT         NOT NULL AUTO_INCREMENT,
-  `citizenship` VARCHAR(45) NOT NULL,
-  PRIMARY KEY (`id`)
-)
-  ENGINE = InnoDB
-  DEFAULT CHARACTER SET = utf8;
-
--- -----------------------------------------------------
--- Table `guardian`.`city`
--- -----------------------------------------------------
 DROP TABLE IF EXISTS `guardian`.`city`;
-
-CREATE TABLE `city` (
-  `id`   INT         NOT NULL AUTO_INCREMENT,
-  `city` VARCHAR(45) NOT NULL,
-  PRIMARY KEY (`id`)
-)
-  ENGINE = InnoDB
-  DEFAULT CHARACTER SET = utf8;
-
--- -----------------------------------------------------
--- Table `guardian`.`photo`
--- -----------------------------------------------------
-DROP TABLE IF EXISTS `guardian`.`photo`;
-
-CREATE TABLE `photo` (
-  `id`        INT         NOT NULL AUTO_INCREMENT,
-  `userId`    INT         NOT NULL,
-  `reference` VARCHAR(45) NOT NULL,
-  PRIMARY KEY (`id`)
-)
-  ENGINE = InnoDB
-  DEFAULT CHARACTER SET = utf8;
-
--- -----------------------------------------------------
--- Table `guardian`.`department`
--- -----------------------------------------------------
 DROP TABLE IF EXISTS `guardian`.`department`;
-
-CREATE TABLE `department` (
-  `id`         INT         NOT NULL AUTO_INCREMENT,
-  `department` VARCHAR(45) NOT NULL,
-  PRIMARY KEY (`id`)
+DROP TABLE IF EXISTS `guardian`.`user`;
+DROP TABLE IF EXISTS `guardian`.`photo`;
+CREATE TABLE citizenship
+(
+  id          INT AUTO_INCREMENT
+    PRIMARY KEY,
+  citizenship VARCHAR(45) NOT NULL
 )
-  ENGINE = InnoDB
-  DEFAULT CHARACTER SET = utf8;
+  ENGINE = InnoDB;
 
-#ALTER TABLE `user` DROP FOREIGN KEY `user_fk0`;
-ALTER TABLE `guardian`.`user`
-  ADD CONSTRAINT `fk_userId` FOREIGN KEY (`id`) REFERENCES `guardian`.`photo` (`userId`);
+CREATE TABLE city
+(
+  id   INT AUTO_INCREMENT
+    PRIMARY KEY,
+  city VARCHAR(45) NOT NULL
+)
+  ENGINE = InnoDB;
 
-#ALTER TABLE `citizenship` DROP FOREIGN KEY `citizenship_fk0`;
-ALTER TABLE `citizenship`
-  ADD CONSTRAINT `citizenship_fk0` FOREIGN KEY (`id`) REFERENCES `user` (`citizenshipId`);
+CREATE TABLE department
+(
+  id         INT AUTO_INCREMENT
+    PRIMARY KEY,
+  department VARCHAR(45) NOT NULL
+)
+  ENGINE = InnoDB;
 
-#ALTER TABLE `city` DROP FOREIGN KEY `city_fk0`;
-ALTER TABLE `city`
-  ADD CONSTRAINT `city_fk0` FOREIGN KEY (`id`) REFERENCES `user` (`cityId`);
+CREATE TABLE photo
+(
+  id        INT AUTO_INCREMENT
+    PRIMARY KEY,
+  userId    INT         NOT NULL,
+  reference VARCHAR(45) NOT NULL
+)
+  ENGINE = InnoDB;
 
-#ALTER TABLE `department` DROP FOREIGN KEY `department_fk0`;
-ALTER TABLE `department`
-  ADD CONSTRAINT `department_fk0` FOREIGN KEY (`id`) REFERENCES `user` (`departmentId`);
+CREATE INDEX photo_user_id_fk
+  ON photo (userId);
+
+CREATE TABLE user
+(
+  id            INT AUTO_INCREMENT
+    PRIMARY KEY,
+  firstName     VARCHAR(45)                             ,
+  lastName      VARCHAR(45)                             ,
+  inn           INT                                     ,
+  citizenshipId INT                                     ,
+  birthDate     INT                                     ,
+  cityId        INT                                     ,
+  tel           INT                                     ,
+  photoExists   INT                                     ,
+  departmentId  INT                                     ,
+  createDate    TIMESTAMP DEFAULT CURRENT_TIMESTAMP      ON UPDATE CURRENT_TIMESTAMP,
+  updateDate    TIMESTAMP DEFAULT '0000-00-00 00:00:00' ,
+  CONSTRAINT user_citizenship_id_fk
+  FOREIGN KEY (citizenshipId) REFERENCES citizenship (id),
+  CONSTRAINT user_city_id_fk
+  FOREIGN KEY (cityId) REFERENCES city (id),
+  CONSTRAINT user_department_id_fk
+  FOREIGN KEY (departmentId) REFERENCES department (id)
+)
+  ENGINE = InnoDB;
+
+CREATE INDEX user_citizenship_id_fk
+  ON user (citizenshipId);
+
+CREATE INDEX user_city_id_fk
+  ON user (cityId);
+
+CREATE INDEX user_department_id_fk
+  ON user (departmentId);
+
+ALTER TABLE photo
+  ADD CONSTRAINT photo_user_id_fk
+FOREIGN KEY (userId) REFERENCES user (id) ON DELETE CASCADE;
 
