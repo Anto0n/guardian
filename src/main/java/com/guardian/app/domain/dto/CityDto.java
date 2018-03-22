@@ -1,13 +1,10 @@
 package com.guardian.app.domain.dto;
 
+import lombok.Builder;
+
+@Builder
 public class CityDto {
+
     private String city;
 
-    public String getCity() {
-        return city;
-    }
-
-    public void setCity(String city) {
-        this.city = city;
-    }
 }
