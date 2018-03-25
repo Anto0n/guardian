@@ -3,8 +3,11 @@ package com.guardian.app.domain.dto;
 import java.util.Date;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonAutoDetect;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import lombok.Builder;
 import lombok.Getter;
+import lombok.Setter;
 import lombok.ToString;
 
 @Builder
@@ -25,3 +28,4 @@ public class UserDto {
     private final Date updateDate;
 
 }
+
