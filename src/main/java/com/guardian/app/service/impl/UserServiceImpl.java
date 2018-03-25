@@ -11,6 +11,8 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import static com.guardian.app.util.DtoUtil.applyIfNotNullOrTrue;
+
 @Service
 public class UserServiceImpl implements UserService {
 
@@ -30,6 +32,22 @@ public class UserServiceImpl implements UserService {
     @Override
     public void update(User user) {
         userDao.save(user);
+    }
+
+    @Override
+    public List<UserDto> findUsers(User user) {
+
+        List<UserDto> founded = userDao.findAllByFirstNameAndBirthDate(user.getFirstName(), user.getBirthDate())
+                .stream()
+                .map(DtoUtil::toDto)
+                .filter(u -> applyIfNotNullOrTrue(user.getCitizenship(), citizenship -> DtoUtil.toDto(citizenship).equals(u.getCitizenship())))
+//                .filter(u2 -> applyIfNotNullOrTrue(u2.getCity(), cityDto -> cityDto.equals(applyIfNotNull(user.getCity(), DtoUtil::toDto))))
+//                .filter(u3 -> applyIfNotNullOrTrue(u3.getDepartment(), departmentDto -> departmentDto.equals(applyIfNotNull(user.getDepartment(), DtoUtil::toDto))))
+//                .filter(u4 -> applyIfNotNullOrTrue(u4.getInn(), inn -> inn.equals(user.getInn())))
+                .filter(u5 -> applyIfNotNullOrTrue(u5.getTel(), tel -> tel.equals(user.getTel())))
+                .collect(Collectors.toList());
+
+        return founded;
     }
 
     @Override

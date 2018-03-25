@@ -13,4 +13,5 @@ public interface UserDao extends CrudRepository<User, Integer> {
     User findById(int id);
     User save(User user);
     List<User> findAll();
+    List<User> findAllByFirstNameAndBirthDate(String firstName, Integer birthDate);
 }

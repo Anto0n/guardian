@@ -19,7 +19,7 @@ public class DtoUtil {
     public static UserDto toDto(User user) {
         return UserDto.builder()
                 .id(user.getId())
-                .firsName(user.getFirsName())
+                .firstName(user.getFirstName())
                 .lastName(user.getLastName())
                 .inn(user.getInn())
                 .citizenship(CitizenshipDto.builder()
@@ -53,6 +53,10 @@ public class DtoUtil {
         return PhotoDto.builder().reference(photo.getReference()).build();
     }
 
+    public static CitizenshipDto toDto(Citizenship citizenship) {
+        return CitizenshipDto.builder().citizenship(citizenship.getCitizenship()).build();
+    }
+
     /**
      * Apply function to parameter if parameter is not null
      * @param t is object to explore
@@ -65,5 +69,11 @@ public class DtoUtil {
         return t !=null
                 ? function.apply(t)
                 : null;
+    }
+
+    public static <T, O> Boolean applyIfNotNullOrTrue(T t, Function<T, Boolean> function) {
+        return t !=null
+                ? function.apply(t)
+                : true;
     }
 }

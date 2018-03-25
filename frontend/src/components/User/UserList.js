@@ -1,14 +1,16 @@
-import React from "react";
+import React, {Component} from 'react';
 
-import User from "./User";
 
-const UserList = (props) => {
-    return (
+class UserList extends Component{
+    render() {
+    return this.props.users ? (
         <div>
-            {props.users.map(user =>
-                <User key={user.id} firstName={user.firstName}/>
+            {this.props.users.map(user =>
+                <span>{user.firstName}</span>
             )}
         </div>
-    );
-};
+    )
+        : null;
+    }
+}
 export default UserList;

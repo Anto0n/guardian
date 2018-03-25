@@ -5,19 +5,17 @@ import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 
 @Builder
 @Getter
 @ToString
+@EqualsAndHashCode
 public class UserDto {
     private final Integer id;
-    private final String firsName;
+    private final String firstName;
     private final String lastName;
-    private final int inn;
+    private final Integer inn;
     private final CitizenshipDto citizenship;
     private final Integer birthDate;
     private final CityDto city;

@@ -1,10 +1,13 @@
 package com.guardian.app.domain.entity;
 
+import lombok.EqualsAndHashCode;
+
 import javax.persistence.*;
 import java.util.Date;
 import java.util.List;
 
 @Entity
+@EqualsAndHashCode
 public class User {
 
     @Id
@@ -12,10 +15,10 @@ public class User {
     private Integer id;
 
     @Column(name = "firstName", columnDefinition = "MEDIUMTEXT")
-    private String firsName;
+    private String firstName;
     @Column(name = "lastName", columnDefinition = "MEDIUMTEXT")
     private String lastName;
-    private int inn;
+    private Integer inn;
 
     @ManyToOne
     @JoinColumn(name = "citizenshipId")
@@ -47,12 +50,12 @@ public class User {
         this.id = id;
     }
 
-    public String getFirsName() {
-        return firsName;
+    public String getFirstName() {
+        return firstName;
     }
 
-    public void setFirsName(String firsName) {
-        this.firsName = firsName;
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
     }
 
     public String getLastName() {

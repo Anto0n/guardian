@@ -1,9 +1,12 @@
 package com.guardian.app.domain.entity;
 
 
+import lombok.EqualsAndHashCode;
+
 import javax.persistence.*;
 
 @Entity
+@EqualsAndHashCode
 public class Photo {
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)

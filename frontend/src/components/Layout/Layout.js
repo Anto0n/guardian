@@ -1,8 +1,9 @@
 import React from 'react';
 import Aux from '../../hoc/ReactAux';
 
+
 // import UserList from "../User/UserList";
-// import UserListPageBuilder from "../../containers/UserListPageBuilder";
+import UserListPageBuilder from "../../containers/UserListPageBuilder";
 
 // const users = [
 //     { id: 1, firstName: "Leanne Graham" },
@@ -18,7 +19,7 @@ const layout = (props) => (
             {props.children}
         </main>
         {/*<UserList users={users}/>*/}
-        {/*<UserListPageBuilder users={this.state.users}/>*/}
+        <UserListPageBuilder/>
         <div>Toolbar</div>
     </Aux>
 );
