@@ -10,8 +10,8 @@ insert into guardian.department (department) values ('Відділ 1');
 insert into guardian.department (department) values ('Відділ 2');
 insert into guardian.department (department) values ('Відділ 3');
 
-insert into guardian.user (firstName, lastName, inn, citizenshipId, birthDate, cityId, tel, departmentId) values ('Іванов', 'Сергій', '12345678', '1', '01011991', '1', '0442510170', '1');
-insert into guardian.user (firstName, lastName, inn, citizenshipId, birthDate, cityId, tel, departmentId) values ('Шевченко', 'Андрій', '87654321', '2', '11111992', '2', '0442554470', '2');
+insert into guardian.user (firstName, lastName, inn, citizenshipId, birthDate, cityId, tel, departmentId) values ('Сергій', 'Іванов',  '12345678', '1', '01011991', '1', '0442510170', '1');
+insert into guardian.user (firstName, lastName, inn, citizenshipId, birthDate, cityId, tel, departmentId) values ('Андрій', 'Шевченко', '87654321', '2', '11111992', '2', '0442554470', '2');
 
 
 insert into guardian.photo (userId, reference) values (1,'Фото1');
