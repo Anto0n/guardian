@@ -31,11 +31,12 @@ public class City {
         this.city = city;
     }
 
-    @Override
-    public String toString() {
-        return "City{" +
-                "id=" + id +
-                ", city='" + city + '\'' +
-                '}';
+    public List<User> getUserList() {
+        return userList;
     }
+
+    public void setUserList(List<User> userList) {
+        this.userList = userList;
+    }
+
 }

@@ -4,7 +4,7 @@ import com.guardian.app.dao.UserDao;
 import com.guardian.app.domain.dto.UserDto;
 import com.guardian.app.domain.entity.User;
 import com.guardian.app.service.UserService;
-import com.guardian.app.util.UserUtil;
+import com.guardian.app.util.DtoUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -19,7 +19,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public UserDto findById(int id) {
-        return UserUtil.toDto(userDao.findById(id));
+        return DtoUtil.toDto(userDao.findById(id));
     }
 
     @Override
@@ -28,7 +28,12 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    public void update(User user) {
+        userDao.save(user);
+    }
+
+    @Override
     public List<UserDto> findAll() {
-        return userDao.findAll().stream().map(UserUtil::toDto).collect(Collectors.toList());
+        return userDao.findAll().stream().map(DtoUtil::toDto).collect(Collectors.toList());
     }
 }

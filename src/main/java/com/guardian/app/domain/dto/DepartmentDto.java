@@ -1,14 +1,10 @@
 package com.guardian.app.domain.dto;
 
+import lombok.Builder;
+
+@Builder
 public class DepartmentDto {
 
     private String department;
 
-    public String getDepartment() {
-        return department;
-    }
-
-    public void setDepartment(String department) {
-        this.department = department;
-    }
 }
