@@ -18,5 +18,5 @@ insert into guardian.photo (userId, reference) values (1,'Фото1');
 insert into guardian.photo (userId, reference) values (1,'Фото2');
 insert into guardian.photo (userId, reference) values (2,'Фото3');
 
-SELECT * FROM guardian.user;
+SELECT firstName, lastName, birthDate, city, citizenship FROM guardian.user JOIN city c ON user.cityId = c.id JOIN citizenship c2 ON user.citizenshipId = c2.id;
 SELECT * FROM guardian.citizenship ;

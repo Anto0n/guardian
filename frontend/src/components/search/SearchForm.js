@@ -7,10 +7,6 @@ class SearchForm extends Component {
 
     birthDateRegex ="^\\d{2}[.]\\d{2}[.]\\d{4}";
 
-    // state ={
-    //
-    // };
-
     constructor() {
         super();
         this.user = new UserModel();
@@ -19,13 +15,13 @@ class SearchForm extends Component {
     searchUser(){
         this.user.firstName=this.firstName.value;
         this.user.lastName=this.lastName.value;
-        this.citizenship.value == ""
+        this.citizenship.value.toString() === ""
             ? this.user.citizenship=null
             : this.user.citizenship.citizenship=this.citizenship.value;
-        this.department.value === ""
+        this.department.value.toString() === ""
             ? this.user.department=null
             : this.user.department.department=this.department.value;
-        this.city.value === ""
+        this.city.value.toString() === ""
             ? this.user.city=null
             : this.user.city.city=this.city.value;
         this.user.inn=this.inn.value;
