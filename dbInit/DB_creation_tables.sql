@@ -60,7 +60,7 @@ CREATE TABLE user
   lastName      VARCHAR(45)                             ,
   inn           INT                                     ,
   citizenshipId INT                                     ,
-  birthDate     INT                                     ,
+  birthDate     VARCHAR(45)                                     ,
   cityId        INT                                     ,
   tel           INT                                     ,
   photoExists   INT                                     ,

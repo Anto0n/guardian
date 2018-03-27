@@ -1,16 +1,7 @@
 import React from 'react';
 import Aux from '../../hoc/ReactAux';
 
-
-// import UserList from "../User/UserList";
-import UserListPageBuilder from "../../containers/UserListPageBuilder";
-
-// const users = [
-//     { id: 1, firstName: "Leanne Graham" },
-//     { id: 2, firstName: "Ervin Howell" },
-//     { id: 3, firstName: "Clementine Bauch" },
-//     { id: 4, firstName: "Patricia Lebsack" }
-// ];
+import UserSearch from "../search/UserSearch";
 
 
 const layout = (props) => (
@@ -18,8 +9,7 @@ const layout = (props) => (
         <main>
             {props.children}
         </main>
-        {/*<UserList users={users}/>*/}
-        <UserListPageBuilder/>
+        <UserSearch/>
         <div>Toolbar</div>
     </Aux>
 );

@@ -17,7 +17,7 @@ public class UserDto {
     private final String lastName;
     private final Integer inn;
     private final CitizenshipDto citizenship;
-    private final Integer birthDate;
+    private final String birthDate;
     private final CityDto city;
     private final Integer tel;
     private final List<PhotoDto> photos;

@@ -37,14 +37,14 @@ public class UserServiceImpl implements UserService {
     @Override
     public List<UserDto> findUsers(User user) {
 
-        List<UserDto> founded = userDao.findAllByFirstNameAndBirthDate(user.getFirstName(), user.getBirthDate())
+        List<UserDto> founded = userDao.findAllByFirstNameAndBirthDate(user.getFirstName(), user.getBirthDate().replace(".", ""))
                 .stream()
                 .map(DtoUtil::toDto)
                 .filter(u -> applyIfNotNullOrTrue(user.getCitizenship(), citizenship -> DtoUtil.toDto(citizenship).equals(u.getCitizenship())))
                 .filter(u2 -> applyIfNotNullOrTrue(user.getCity(), city -> DtoUtil.toDto(city).equals(u2.getCity())))
                 .filter(u3 -> applyIfNotNullOrTrue(user.getDepartment(), department -> DtoUtil.toDto(department).equals(u3.getDepartment())))
-                .filter(u3 -> applyIfNotNullOrTrue(user.getInn(), inn -> inn.equals(u3.getInn())))
-                .filter(u5 -> applyIfNotNullOrTrue(u5.getTel(), tel -> tel.equals(user.getTel())))
+                .filter(u4 -> applyIfNotNullOrTrue(user.getInn(), inn -> inn.equals(u4.getInn())))
+                .filter(u5 -> applyIfNotNullOrTrue(user.getTel(), tel -> tel.equals(u5.getTel())))
                 .collect(Collectors.toList());
 
         return founded;

@@ -4,14 +4,14 @@ import lombok.EqualsAndHashCode;
 
 import javax.persistence.*;
 import java.util.List;
+import java.util.Objects;
 
 @Entity
-@EqualsAndHashCode
 public class Citizenship {
 
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
-    private int id;
+    private Integer id;
 
     @Column(name = "citizenship")
     private String citizenship;
@@ -19,11 +19,11 @@ public class Citizenship {
     @OneToMany(mappedBy = "citizenship")  //fetch = FetchType.EAGER
     private List<User> userList;
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -33,5 +33,10 @@ public class Citizenship {
 
     public void setCitizenship(String citizenship) {
         this.citizenship = citizenship;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        return this == o || this.citizenship.equals(((Citizenship) o).getCitizenship());
     }
 }

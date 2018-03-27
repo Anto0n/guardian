@@ -1,6 +1,8 @@
 package com.guardian.app.domain.entity;
 
 import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.Setter;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -8,6 +10,8 @@ import java.util.List;
 
 @Entity
 @EqualsAndHashCode
+@Getter
+@Setter
 public class User {
 
     @Id
@@ -33,7 +37,7 @@ public class User {
     @OneToMany(mappedBy = "user")  //fetch = FetchType.EAGER
     private List<Photo> photos;
 
-    private Integer birthDate;
+    private String birthDate;
     private Integer tel;
     @Column(name = "createDate")
     @Temporal(TemporalType.TIMESTAMP)
@@ -42,99 +46,4 @@ public class User {
     @Temporal(TemporalType.TIMESTAMP)
     private Date updateDate;
 
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public String getFirstName() {
-        return firstName;
-    }
-
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
-
-    public int getInn() {
-        return inn;
-    }
-
-    public void setInn(int inn) {
-        this.inn = inn;
-    }
-
-    public Citizenship getCitizenship() {
-        return citizenship;
-    }
-
-    public void setCitizenship(Citizenship citizenship) {
-        this.citizenship = citizenship;
-    }
-
-    public Integer getBirthDate() {
-        return birthDate;
-    }
-
-    public void setBirthDate(Integer birthDate) {
-        this.birthDate = birthDate;
-    }
-
-    public City getCity() {
-        return city;
-    }
-
-    public void setCity(City city) {
-        this.city = city;
-    }
-
-    public Integer getTel() {
-        return tel;
-    }
-
-    public void setTel(Integer tel) {
-        this.tel = tel;
-    }
-
-    public List<Photo> getPhotos() {
-        return photos;
-    }
-
-    public void setPhotos(List<Photo> photos) {
-        this.photos = photos;
-    }
-
-    public Department getDepartment() {
-        return department;
-    }
-
-    public void setDepartment(Department department) {
-        this.department = department;
-    }
-
-    public Date getCreateDate() {
-        return createDate;
-    }
-
-    public void setCreateDate(Date createDate) {
-        this.createDate = createDate;
-    }
-
-    public Date getUpdateDate() {
-        return updateDate;
-    }
-
-    public void setUpdateDate(Date updateDate) {
-        this.updateDate = updateDate;
-    }
 }

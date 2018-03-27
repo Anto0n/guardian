@@ -19,3 +19,4 @@ insert into guardian.photo (userId, reference) values (1,'Фото2');
 insert into guardian.photo (userId, reference) values (2,'Фото3');
 
 SELECT * FROM guardian.user;
+SELECT * FROM guardian.citizenship ;

@@ -10,7 +10,7 @@ import javax.persistence.*;
 public class Photo {
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
-    private int id;
+    private Integer id;
 
     @ManyToOne
     @JoinColumn(name = "userId")
@@ -19,11 +19,11 @@ public class Photo {
     @Column(name = "reference")
     private String reference;
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
