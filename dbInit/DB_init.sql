@@ -27,3 +27,4 @@ insert into guardian.photo (userId, reference) values (5,'Фото4');
 USE guardian;
 SELECT firstName, lastName, birthDate, city, citizenship FROM guardian.user JOIN city c ON user.cityId = c.id JOIN citizenship c2 ON user.citizenshipId = c2.id;
 SELECT * FROM guardian.citizenship ;
+# select * from user where user.firstName = 'Сергій' and user.lastName = 'Іванов' and user.birthDate = '11011991';

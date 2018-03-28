@@ -1,10 +1,7 @@
 package com.guardian.app.domain.entity;
 
-import lombok.EqualsAndHashCode;
-
 import javax.persistence.*;
 import java.util.List;
-import java.util.Objects;
 
 @Entity
 public class Citizenship {

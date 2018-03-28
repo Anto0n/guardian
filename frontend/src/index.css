@@ -6,7 +6,7 @@ body {
 .GuardianHeader {
   background-color: #2bbbad;
     padding-left: 20%;
-    padding-right: 5%;
+    padding-right: 10%;
 }
 .userListHolder {
   padding-top: 10px;
@@ -17,9 +17,8 @@ body {
 .userListItem{
   display: inline-block;
 }
-.notHiddenTable{
-  display: block;
-}
-.hiddenTable{
-  display: none;
+
+.errorMessage {
+  text-align: center;
+  background-color: rgba(185, 131, 130, 0.67);
 }

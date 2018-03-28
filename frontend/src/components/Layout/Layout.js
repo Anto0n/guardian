@@ -13,7 +13,6 @@ class Layout extends Component {
     render() {
         return <Aux>
             <Navbar className={styles.GuardianHeader} brand="GUARDIAN" right><NavItem href="/"><Icon>search</Icon></NavItem></Navbar>
-            <main/>
             <SearchForm isActive={this.state.formActive}/>
         </Aux>
     }

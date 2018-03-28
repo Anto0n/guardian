@@ -37,18 +37,11 @@ public class UserServiceImpl implements UserService {
     @Override
     public List<UserDto> findUsers(User user) {
 
-        List<UserDto> founded = userDao.findAllByFirstNameAndBirthDate(user.getFirstName(), user.getBirthDate().replace(".", ""))
+        return userDao.findAllByFirstNameAndLastNameAndBirthDate(user.getFirstName(), user.getLastName(), user.getBirthDate().replace(".", ""))
                 .stream()
                 .filter(e-> this.filterWithUser(user, e))
                 .map(DtoUtil::toDto)
-//                .filter(u -> applyIfNotNullOrTrue(user.getCitizenship(), citizenship -> DtoUtil.toDto(citizenship).equals(u.getCitizenship())))
-//                .filter(u2 -> applyIfNotNullOrTrue(user.getCity(), city -> DtoUtil.toDto(city).equals(u2.getCity())))
-//                .filter(u3 -> applyIfNotNullOrTrue(user.getDepartment(), department -> DtoUtil.toDto(department).equals(u3.getDepartment())))
-//                .filter(u4 -> applyIfNotNullOrTrue(user.getInn(), inn -> inn.equals(u4.getInn())))
-//                .filter(u5 -> applyIfNotNullOrTrue(user.getTel(), tel -> tel.equals(u5.getTel())))
                 .collect(Collectors.toList());
-
-        return founded;
     }
 
     @Override
@@ -57,10 +50,9 @@ public class UserServiceImpl implements UserService {
     }
 
     private boolean filterWithUser(User initUser, User dbUser) {
-        return applyIfNotNullOrTrue(initUser.getCitizenship(), citizenship -> citizenship.getCitizenship().equals(dbUser.getCitizenship().getCitizenship()))
-                &&  applyIfNotNullOrTrue(initUser.getCity(), city -> city.getCity().equals(dbUser.getCity().getCity()))
-                && applyIfNotNullOrTrue(initUser.getDepartment(), department -> department.getDepartment().equals(dbUser.getDepartment().getDepartment()))
-                && applyIfNotNullOrTrue(initUser.getInn(), inn -> inn.equals(dbUser.getInn()))
+        return applyIfNotNullOrTrue(initUser.getCitizenship().getCitizenship(), citizenship -> citizenship.equals(dbUser.getCitizenship().getCitizenship()))
+                && applyIfNotNullOrTrue(initUser.getCity().getCity(), city -> city.equals(dbUser.getCity().getCity()))
+                && applyIfNotNullOrTrue(initUser.getDepartment().getDepartment(), department -> department.equals(dbUser.getDepartment().getDepartment()))               && applyIfNotNullOrTrue(initUser.getInn(), inn -> inn.equals(dbUser.getInn()))
                 && applyIfNotNullOrTrue(initUser.getTel(), tel -> tel.equals(dbUser.getTel()));
     }
 }

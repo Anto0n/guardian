@@ -1,11 +1,12 @@
 package com.guardian.app.domain.dto;
 
+import lombok.Builder;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.ToString;
+
 import java.util.Date;
 import java.util.List;
-
-import com.fasterxml.jackson.annotation.JsonAutoDetect;
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-import lombok.*;
 
 @Builder
 @Getter
