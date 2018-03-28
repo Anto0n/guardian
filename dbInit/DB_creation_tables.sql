@@ -63,7 +63,6 @@ CREATE TABLE user
   birthDate     VARCHAR(45)                                     ,
   cityId        INT                                     ,
   tel           INT                                     ,
-  photoExists   INT                                     ,
   departmentId  INT                                     ,
   createDate    TIMESTAMP DEFAULT CURRENT_TIMESTAMP      ON UPDATE CURRENT_TIMESTAMP,
   updateDate    TIMESTAMP DEFAULT '0000-00-00 00:00:00' ,
