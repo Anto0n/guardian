@@ -1,17 +1,23 @@
-import React from 'react';
+import React, {Component} from 'react';
 import Aux from '../../hoc/ReactAux';
+import styles from '../../index.css';
 
-import UserSearch from "../search/UserSearch";
+import {Icon, Navbar, NavItem} from "react-materialize";
+import SearchForm from "../search/SearchForm";
 
+class Layout extends Component {
+    state = {
+        formActive: true
+    };
 
-const layout = (props) => (
-    <Aux>
-        <main>
-            {props.children}
-        </main>
-        <UserSearch/>
-        <div>Toolbar</div>
-    </Aux>
-);
-
-export default layout;
+    render() {
+        return <Aux>
+            <Navbar className={styles.GuardianHeader} brand="GUARDIAN" right><NavItem href="localhost:3000"><Icon
+                className={styles.NavIcon}>search</Icon></NavItem></Navbar>
+            <main>
+            </main>
+            <SearchForm isActive={this.state.formActive}/>
+        </Aux>
+    }
+}
+export default Layout;

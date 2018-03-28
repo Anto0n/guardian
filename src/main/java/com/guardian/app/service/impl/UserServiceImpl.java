@@ -39,7 +39,7 @@ public class UserServiceImpl implements UserService {
 
         List<UserDto> founded = userDao.findAllByFirstNameAndBirthDate(user.getFirstName(), user.getBirthDate().replace(".", ""))
                 .stream()
-                .filter(e-> this.filterWithUser(e, user))
+                .filter(e-> this.filterWithUser(user, e))
                 .map(DtoUtil::toDto)
 //                .filter(u -> applyIfNotNullOrTrue(user.getCitizenship(), citizenship -> DtoUtil.toDto(citizenship).equals(u.getCitizenship())))
 //                .filter(u2 -> applyIfNotNullOrTrue(user.getCity(), city -> DtoUtil.toDto(city).equals(u2.getCity())))
@@ -57,9 +57,9 @@ public class UserServiceImpl implements UserService {
     }
 
     private boolean filterWithUser(User initUser, User dbUser) {
-        return applyIfNotNullOrTrue(initUser.getCitizenship(), citizenship -> citizenship.equals(dbUser.getCitizenship()))
-                &&  applyIfNotNullOrTrue(initUser.getCity(), city -> city.equals(dbUser.getCity()))
-                && applyIfNotNullOrTrue(initUser.getDepartment(), department -> department.equals(dbUser.getDepartment()))
+        return applyIfNotNullOrTrue(initUser.getCitizenship(), citizenship -> citizenship.getCitizenship().equals(dbUser.getCitizenship().getCitizenship()))
+                &&  applyIfNotNullOrTrue(initUser.getCity(), city -> city.getCity().equals(dbUser.getCity().getCity()))
+                && applyIfNotNullOrTrue(initUser.getDepartment(), department -> department.getDepartment().equals(dbUser.getDepartment().getDepartment()))
                 && applyIfNotNullOrTrue(initUser.getInn(), inn -> inn.equals(dbUser.getInn()))
                 && applyIfNotNullOrTrue(initUser.getTel(), tel -> tel.equals(dbUser.getTel()));
     }

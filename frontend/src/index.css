@@ -3,3 +3,23 @@ body {
   padding: 0;
   font-family: sans-serif;
 }
+.GuardianHeader {
+  background-color: #2bbbad;
+    padding-left: 20%;
+    padding-right: 5%;
+}
+.userListHolder {
+  padding-top: 10px;
+}
+.userDataTable {
+  margin-bottom: 30px;
+}
+.userListItem{
+  display: inline-block;
+}
+.notHiddenTable{
+  display: block;
+}
+.hiddenTable{
+  display: none;
+}
