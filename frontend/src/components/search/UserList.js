@@ -50,7 +50,7 @@ class UserList extends Component {
                                 </tr>
                                 <tr>
                                     <td>Дата народження</td>
-                                    <td>{user.birthDate}</td>
+                                    <td>{user.birthDate.substr(0,2).concat(".").concat(user.birthDate.substr(2,2)).concat(".").concat(user.birthDate.substr(4))}</td>
                                 </tr>
                                 <tr>
                                     <td>Мiсто</td>
