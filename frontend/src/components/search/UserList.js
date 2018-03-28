@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import styles from '../../index.css';
-import {Button, Card, Row} from "react-materialize";
+import {Card} from "react-materialize";
 
 class UserList extends Component {
 

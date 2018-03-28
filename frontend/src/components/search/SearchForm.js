@@ -31,7 +31,6 @@ class SearchForm extends Component {
                     <Input label="Прiзвище" s ={6}  ref={(lastNameInput) => { this.lastName = lastNameInput; }} />
                     <Input label="IНН" s ={12} ref={(inn) => { this.inn = inn; }}><Icon>contacts</Icon></Input>
                     <Input label="Громадянство" s ={12} ref={(citizenshipInput) => { this.citizenship = citizenshipInput; }} ><Icon>account_balance</Icon></Input>
-                    {/*<Input label="Громадянство" s ={12} ref={(departmentInput) => { this.department = departmentInput; }} />*/}
                     <Input label="Дата народження" s ={12} ref={(birthDate) => { this.birthDate = birthDate; }} ><Icon>today</Icon></Input>
                     <Input label="Мiсто" s ={12} ref={(cityInput) => { this.city = cityInput; }} ><Icon>location_on</Icon></Input>
                     <Input label="Телефон" s ={12}  ref={(telInput) => { this.tel = telInput; }} ><Icon>phone</Icon></Input>
@@ -67,16 +66,11 @@ class SearchForm extends Component {
                 resultPresent: true
             });
             this.setState(newState);
-            // this.state.userList = response.data;
-            // this.state.resultPresent = true;
         } else {
             const newState = Object.assign({}, this.state, {
                 resultPresent: false
             });
-
-            // store the new state object in the component's state
             this.setState(newState);
-            // this.setState(...this.state.resultPresent=false);
         }
     })
       .catch(error => console.log(error));
